@@ -27,6 +27,8 @@ In symmetric key encryption, the key used to encrypt a message is the same as th
 
 Since both parties have performed the same operations, they now both hold the secret key, although it was never openly communicated.  This key can now be used to encrypt messages sent between the two of them.
 
+Pro tip: don't use the same prime as everyone else on the Internet because, while it's extremely expensive, each prime *can* be brute forced [by state-level attackers](https://freedom-to-tinker.com/blog/haldermanheninger/how-is-nsa-breaking-so-much-crypto/)
+
 #####One-time Pad
 A [one-time pad](https://en.wikipedia.org/wiki/One-time_pad) is a method for encrypting a message that cannot be cracked when used properly.  Here, we will encrypt a message by combining the secret key with the plaintext message by a bitshifting operation-- specifically bitwise or (xor).  Bitwise or is the reverse of itself, so to decrypt the message, all we do is remove the key by performing the same operation, but this time with the ciphertext.
 
