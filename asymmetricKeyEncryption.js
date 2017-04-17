@@ -4,33 +4,94 @@ var Identity = function(){
   this.modulus = null;
 };
 
+/**
+ * Calculates the modulus and private and public keys, and stores them on the
+ * Identity.
+ *
+ * @param {number} p the first of two distinct primes
+ * @param {number} q the second prime
+ *
+ * @sideeffect sets this.modulus, this.publicKey, and this.privateKey on the
+ *     Identity instance
+ */
 Identity.prototype.generateKeyPair = function(p, q){
-  /* Should calculate the private and public key, and store them on the Identity */
+
 };
 
+/**
+ * Given a message, generates and returns the sender's signature. A signature
+ * is a messsage encrypted using an Identity's private key to verify that they
+ * sent the message.
+ *
+ * @param {string} text the message to sign
+ * @return {string} the signature
+ */
 Identity.prototype.signMessage = function(text){
-  /* Given text, generate and return the senders signature */
+
 };
 
+/**
+ * Given plaintext and a recipient Identity, generates ciphertext and signature.
+ * Hint: in this case, the signature is simply the ciphertext encrypted with the
+ * sender's private key.
+ *
+ * @param {string} plaintext the message to be encrypted and sent
+ * @param {Object} recipient an Identity object
+ * @return {Object} an object with signature, ciphertext, and sender properties
+ */
 Identity.prototype.sendMessage = function(plaintext, recipient){
-  /* Given plaintext and a recipient, sendMessage should follow all the necessary protocols for it to be securely sent, and then send the message */
-  /* (Hint: look at receiveMessage) */
+
 };
 
+/**
+ * Given the ciphertext, signature, and sender, receiveMessage should determine
+ * the integrity of the message and selectively read and return the content.
+ *
+ * @param {string} ciphertext the encrypted message
+ * @param {string} signature the signed message
+ * @param {Object} sender an Identity object
+ * @return {string} the plaintext
+ */
 Identity.prototype.receiveMessage = function(ciphertext, signature, sender){
-  /* Given the ciphertext, signature, and sender, receiveMessage should determine the integrity of the message and selectively read and return the content. */
+
 };
 
+/**
+ * Turns plaintext into ciphertext.
+ *
+ * @param {string} plaintext the message to encrypt
+ * @param {number} key the key (public or private) with which to encrypt
+ * @param {number} modulus the modulus for modular arithmetic calculations
+ * @return {string} the ciphertext
+ */
 var encryptMessage = function(plaintext, key, modulus){
-  /* Should turn plaintext into ciphertext according to the RSA protocol and return it */
+
 };
 
+/**
+ * Turns ciphertext into plaintext.
+ *
+ * @param {string} ciphertext the encrypted message to decrypt
+ * @param {number} key the key (public or private) with which to decrypt
+ * @param {number} modulus the modulus for modular arithmetic calculations
+ * @return {string} the plaintext
+ */
 var decryptMessage = function(ciphertext, key, modulus){
-  /* Should turn ciphertext into plaintext according to the RSA protocol and return it */
+
 };
 
+/**
+ * Checks that a signature is valid.
+ *
+ * @param {string} text the plaintext to check the decrypted signature against
+ * @param {string} signature the claimed encryption of the plaintext with the
+ *     key in question
+ * @param {number} key the public key of the sender
+ * @param {[type]} modulus the modulus for modular arithmetic calculations
+ * @return {boolean} whether or not the decrypted text matches the signature
+ */
 var confirmAuthenticity = function(text, signature, key, modulus){
-  /* Should confirm that the sender is who they claim to be */
+
 };
 
 /*******************************************/
@@ -52,7 +113,7 @@ var numberToLetter = function(number){
 var findCoprime = function(number){
   for(var i = 2; i < number; i++){
     if( determineIfCoprime(i, number) ){
-      return i
+      return i;
     }
   }
 };
@@ -70,7 +131,7 @@ var determineIfCoprime = function(a, b){
   var smaller = Object.keys(factorsa) < Object.keys(factorsb) ? factorsa : factorsb;
   var larger = Object.keys(factorsa) < Object.keys(factorsb) ? factorsb : factorsa;
   for(var value in smaller){
-    if(value in larger) return false
+    if(value in larger) return false;
   }
   return true;
 };
@@ -83,8 +144,8 @@ var factor = function(number){
       primes[number / i] = true;
     }
   }
-  primes[number] = true
-  return primes
+  primes[number] = true;
+  return primes;
 };
 
 calculateModInverse = function(number, mod){
